@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Business Consulting | Heavy Freight & SADC Truck Services</title>
+  <meta name="description" content="Mentor Business Consulting offers heavy truck & trailer freight services across South Africa, SADC countries, and extending to DRC. Heavy haulage, superlinks, flatbeds, lowbeds. Headquartered in Ottery, Cape Town. Call 0605150440.">
+  <meta name="keywords" content="Mentor Business Consulting, Truck services, Heavy Freight South Africa, SADC truck services, DRC transport, Superlink trailers, Flatbed trucks, Ottery Cape Town logistics, Cross border freight">
+  
+  <!-- Modern Typography (Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-contacts">
+        <div class="top-contact-item">
+          <i class="fas fa-map-marker-alt text-gold"></i>
+          <span>51 Sandown Drive, Ottery, Cape Town</span>
+        </div>
+        <div class="top-contact-item">
+          <i class="fas fa-phone-alt text-gold"></i>
+          <a href="tel:0605150440">0605150440</a>
+        </div>
+        <div class="top-contact-item">
+          <i class="fab fa-whatsapp text-gold"></i>
+          <a href="https://wa.me/27605150440" target="_blank">+27 60 515 0440</a>
+        </div>
+      </div>
+      <div>
+        <span class="badge" style="font-size: 0.75rem; padding: 0.2rem 0.6rem;">
+          <i class="fas fa-globe-africa"></i> SA • SADC • DRC Cross-Border Express
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-icon">
+          <i class="fas fa-truck-moving"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">MENTOR</span>
+          <span class="logo-sub">Business Consulting</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#routes">SADC & DRC Routes</a></li>
+        <li><a href="#fleet">Our Fleet</a></li>
+        <li><a href="#estimator">Rate Estimator</a></li>
+        <li><a href="#tracking">Live Tracking</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="tel:0605150440" class="btn btn-outline">
+          <i class="fas fa-headset"></i> Call Dispatch
+        </a>
+        <a href="#estimator" class="btn btn-primary">
+          <i class="fas fa-calculator"></i> Get Quote
+        </a>
+        <div class="mobile-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="badge">
+            <i class="fas fa-shield-alt"></i> Premier Heavy Haulage Logistics
+          </div>
+          <h1>Reliable Truck Services Across <span class="text-gradient">South Africa, SADC & DRC</span></h1>
+          <p>
+            Mentor Business Consulting provides high-capacity heavy truck and trailer transport solutions. We move commercial freight, industrial machinery, and bulk cargo safely from Cape Town & Johannesburg across Southern Africa, extending deep into the Democratic Republic of Congo.
+          </p>
+          
+          <div class="hero-ctas">
+            <a href="#estimator" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Request Freight Quote
+            </a>
+            <a href="#tracking" class="btn btn-outline">
+              <i class="fas fa-search-location"></i> Track Consignment
+            </a>
+            <a href="https://wa.me/27605150440?text=Hello%20Mentor%20Business%20Consulting,%20I%20need%20a%20truck%20freight%20quote." target="_blank" class="btn btn-whatsapp">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3><span class="counter-val" data-target="100">100</span>+</h3>
+              <p>Fleet Units Available</p>
+            </div>
+            <div class="stat-item">
+              <h3><span class="counter-val" data-target="12">12</span>+</h3>
+              <p>SADC & DRC Nations</p>
+            </div>
+            <div class="stat-item">
+              <h3><span class="counter-val" data-target="99">99</span>.8%</h3>
+              <p>On-Time Delivery</p>
+            </div>
+            <div class="stat-item">
+              <h3>24/7</h3>
+              <p>GPS & Border Dispatch</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-quick-card">
+          <h3>
+            <i class="fas fa-bolt text-gold"></i> Quick Rate Estimator
+          </h3>
+          <div class="quick-route-selector">
+            <div class="input-group">
+              <label for="quick-origin"><i class="fas fa-map-pin text-gold"></i> Departure Point</label>
+              <select id="quick-origin">
+                <option value="Cape Town">Cape Town Depot (Ottery)</option>
+                <option value="Johannesburg">Johannesburg Hub</option>
+                <option value="Durban">Durban Port Terminal</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="quick-dest"><i class="fas fa-flag-checkered text-gold"></i> Destination</label>
+              <select id="quick-dest">
+                <option value="Lubumbashi (DRC)">Lubumbashi (Democratic Republic of Congo)</option>
+                <option value="Lusaka (Zambia)">Lusaka (Zambia)</option>
+                <option value="Harare (Zimbabwe)">Harare (Zimbabwe)</option>
+                <option value="Gaborone (Botswana)">Gaborone (Botswana)</option>
+                <option value="Maputo (Mozambique)">Maputo (Mozambique)</option>
+                <option value="Windhoek (Namibia)">Windhoek (Namibia)</option>
+              </select>
+            </div>
+            <a href="#estimator" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+              Calculate Full Freight Estimate <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Section -->
+  <section id="services" class="services-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i class="fas fa-cogs"></i> What We Do</div>
+        <h2>Comprehensive Cross-Border Freight Services</h2>
+        <p>From single loads to long-term heavy haulage supply chains, Mentor Business Consulting provides tailored transport solutions across Africa.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-truck-monster"></i>
+          </div>
+          <h3>Heavy Haulage & Superlinks</h3>
+          <p>34-Ton Superlink trailers and tri-axle flatbeds engineered for high-volume commercial goods, mining equipment, and bulk raw materials.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> High Volume Superlinks (34T)</li>
+            <li><i class="fas fa-check-circle"></i> Tri-Axle Flatbeds & Container Decks</li>
+            <li><i class="fas fa-check-circle"></i> Cargo-in-Transit (GIT) Full Coverage</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-globe-africa"></i>
+          </div>
+          <h3>SADC & DRC Cross-Border</h3>
+          <p>Seamless cross-border freight transit managing customs clearance, border post documentation, and satellite tracking from SA through to DRC.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> Beitbridge, Chirundu & Kasumbalesa Expertise</li>
+            <li><i class="fas fa-check-circle"></i> Dedicated Drivers with Cross-Border Permits</li>
+            <li><i class="fas fa-check-circle"></i> Rapid Border Customs Expediting</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-dolly"></i>
+          </div>
+          <h3>Oversized & Machinery Transit</h3>
+          <p>Specialized lowbed trailers and heavy step-decks designed for heavy excavators, industrial generators, and mining plant equipment.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> Multi-Axle Lowbed Trailers</li>
+            <li><i class="fas fa-check-circle"></i> Escort Vehicle & Abnormal Load Permits</li>
+            <li><i class="fas fa-check-circle"></i> Heavy Lifting & Rigging Support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Route Network (SADC & DRC Highlight) -->
+  <section id="routes" class="routes-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i class="fas fa-route"></i> African Freight Corridors</div>
+        <h2>Extensive Route Coverage: South Africa, SADC & DRC</h2>
+        <p>Our heavy fleets navigate major trade corridors connecting South Africa's ports to Central and Southern Africa.</p>
+      </div>
+
+      <div class="routes-container">
+        <div class="route-info-box">
+          <div class="route-tabs">
+            <button class="route-tab-btn active" data-route="drc">
+              <i class="fas fa-map-marker-alt"></i> DRC Express
+            </button>
+            <button class="route-tab-btn" data-route="sadc">
+              <i class="fas fa-globe"></i> SADC Countries
+            </button>
+            <button class="route-tab-btn" data-route="domestic">
+              <i class="fas fa-road"></i> South Africa Domestic
+            </button>
+          </div>
+
+          <div class="route-detail-card">
+            <div class="route-header-tag">
+              <h3 id="route-title" class="route-destination">Democratic Republic of Congo (DRC) Highway Line</h3>
+              <span id="route-transit" class="transit-badge">5 - 7 Days Transit</span>
+            </div>
+
+            <p id="route-desc" class="route-description">
+              Specialized heavy haulage line extending from Cape Town & Johannesburg directly to Lubumbashi, Kolwezi, Likasi & Kinshasa. Transporting heavy mining equipment, industrial machinery, and containerized goods through Beitbridge, Chirundu, and Kasumbalesa border posts.
+            </p>
+
+            <div class="border-posts-list">
+              <h4>Key Border Posts Managed:</h4>
+              <div id="route-borders" class="border-chips">
+                <span class="chip"><i class="fas fa-passport"></i> Beitbridge (SA/ZIM)</span>
+                <span class="chip"><i class="fas fa-passport"></i> Chirundu (ZIM/ZAM)</span>
+                <span class="chip"><i class="fas fa-passport"></i> Kasumbalesa (ZAM/DRC)</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Ideal Freight:</h4>
+              <p id="route-cargo" style="font-size: 0.95rem; font-weight: 600; color: var(--accent-gold);">
+                Mining Machinery, Heavy Plant Equipment, Chemicals, Manufactured Goods
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="route-visual-card">
+          <div>
+            <div class="badge" style="margin-bottom: 1rem;"><i class="fas fa-satellite-dish"></i> Live Corridor Nodes</div>
+            <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem;">Strategic Dispatch Nodes</h3>
+          </div>
+
+          <div class="map-node-list">
+            <div class="map-node">
+              <div class="map-node-icon"><i class="fas fa-warehouse"></i></div>
+              <div class="map-node-info">
+                <h4>Cape Town Head Office & Depot</h4>
+                <p>51 Sandown Drive, Ottery, Cape Town</p>
+              </div>
+            </div>
+
+            <div class="map-node">
+              <div class="map-node-icon"><i class="fas fa-truck-loading"></i></div>
+              <div class="map-node-info">
+                <h4>Gauteng Freight Distribution Hub</h4>
+                <p>Johannesburg City Corridor & Musina Border Gateway</p>
+              </div>
+            </div>
+
+            <div class="map-node drc">
+              <div class="map-node-icon"><i class="fas fa-flag"></i></div>
+              <div class="map-node-info">
+                <h4>Lubumbashi & Katanga Mining Gateway (DRC)</h4>
+                <p>Kasumbalesa Border Control & Central DRC Delivery</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <a href="https://wa.me/27605150440?text=I%20have%20a%20shipment%20for%20the%20DRC%20/%20SADC%20route" target="_blank" class="btn btn-whatsapp" style="width: 100%;">
+              <i class="fab fa-whatsapp"></i> Inquire About DRC & SADC Slots
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fleet & Trailer Showcase -->
+  <section id="fleet" class="fleet-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i class="fas fa-truck"></i> Heavy Vehicles</div>
+        <h2>Our Fleet & Trailer Specifications</h2>
+        <p>Equipped with modern prime movers and versatile trailer configurations for every payload requirement.</p>
+      </div>
+
+      <div class="fleet-filter-bar">
+        <button class="filter-btn active" data-filter="all">All Vehicles</button>
+        <button class="filter-btn" data-filter="superlink">Superlink 34T</button>
+        <button class="filter-btn" data-filter="flatbed">Flatbeds & Tri-Axles</button>
+        <button class="filter-btn" data-filter="lowbed">Heavy Lowbeds</button>
+        <button class="filter-btn" data-filter="tipper">Side-Tippers</button>
+      </div>
+
+      <div class="fleet-grid">
+        <!-- Card 1 -->
+        <div class="fleet-card" data-category="superlink">
+          <div class="fleet-img-wrapper">
+            <img src="images/superlink_freight_truck.jpg" alt="Superlink Trailer Heavy Truck">
+            <span class="fleet-tag">34 Ton Capacity</span>
+          </div>
+          <div class="fleet-details">
+            <h3>Superlink Double Trailer (34T)</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Maximum payload efficiency for cross-border FMCG, containerized cargo, and general freight.</p>
+            <div class="fleet-specs">
+              <div class="spec-item">
+                <span class="spec-label">Payload</span>
+                <span class="spec-value">34,000 KG</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Deck Length</span>
+                <span class="spec-value">6m + 12m Interlink</span>
+              </div>
+            </div>
+            <a href="#estimator" class="btn btn-outline" style="width: 100%;">Book Superlink</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="fleet-card" data-category="flatbed">
+          <div class="fleet-img-wrapper">
+            <img src="images/hero_heavy_truck.jpg" alt="Tri-Axle Flatbed Truck">
+            <span class="fleet-tag">30 Ton Capacity</span>
+          </div>
+          <div class="fleet-details">
+            <h3>Tri-Axle Flatbed Trailer</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Open deck trailer for steel structures, timber, building materials, and containerized cargo.</p>
+            <div class="fleet-specs">
+              <div class="spec-item">
+                <span class="spec-label">Payload</span>
+                <span class="spec-value">30,000 KG</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Deck Length</span>
+                <span class="spec-value">13.6m Flat Deck</span>
+              </div>
+            </div>
+            <a href="#estimator" class="btn btn-outline" style="width: 100%;">Book Flatbed</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="fleet-card" data-category="lowbed">
+          <div class="fleet-img-wrapper">
+            <img src="images/logistics_terminal.jpg" alt="Heavy Haulage Lowbed">
+            <span class="fleet-tag">50+ Ton Abnormal</span>
+          </div>
+          <div class="fleet-details">
+            <h3>Heavy Duty Lowbed Trailer</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Engineered for heavy construction machinery, earthmoving excavators, and oversized mining rigs.</p>
+            <div class="fleet-specs">
+              <div class="spec-item">
+                <span class="spec-label">Payload</span>
+                <span class="spec-value">50,000+ KG</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Feature</span>
+                <span class="spec-value">Ramps & Escort Ready</span>
+              </div>
+            </div>
+            <a href="#estimator" class="btn btn-outline" style="width: 100%;">Book Lowbed</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Freight Rate Estimator -->
+  <section id="estimator" class="estimator-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i class="fas fa-calculator"></i> Transparent Pricing</div>
+        <h2>Interactive Freight Rate Estimator</h2>
+        <p>Calculate your estimated haulage cost based on route, trailer configuration, and cargo tonnage.</p>
+      </div>
+
+      <div class="estimator-wrapper">
+        <div class="estimator-grid">
+          <div class="estimator-form">
+            <div class="input-group">
+              <label for="est-origin"><i class="fas fa-map-pin text-gold"></i> Dispatch Origin</label>
+              <select id="est-origin">
+                <option value="Cape Town">Cape Town (Ottery Depot)</option>
+                <option value="Johannesburg">Johannesburg Hub</option>
+                <option value="Durban">Durban Port</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="est-destination"><i class="fas fa-flag-checkered text-gold"></i> Destination</label>
+              <select id="est-destination">
+                <option value="Lubumbashi (DRC)">Lubumbashi (DRC)</option>
+                <option value="Lusaka (Zambia)">Lusaka (Zambia)</option>
+                <option value="Harare (Zimbabwe)">Harare (Zimbabwe)</option>
+                <option value="Gaborone (Botswana)">Gaborone (Botswana)</option>
+                <option value="Maputo (Mozambique)">Maputo (Mozambique)</option>
+                <option value="Windhoek (Namibia)">Windhoek (Namibia)</option>
+                <option value="Johannesburg">Johannesburg (SA Domestic)</option>
+                <option value="Cape Town">Cape Town (SA Domestic)</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="est-trailer"><i class="fas fa-truck text-gold"></i> Trailer Configuration</label>
+              <select id="est-trailer">
+                <option value="superlink">Superlink Double Trailer (34T)</option>
+                <option value="flatbed">Tri-Axle Flatbed (30T)</option>
+                <option value="lowbed">Heavy Lowbed Machinery Trailer</option>
+                <option value="sdetipper">Bulk Side-Tipper Trailer</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <div class="range-slider-wrapper">
+                <div class="range-header">
+                  <label><i class="fas fa-weight-hanging text-gold"></i> Cargo Weight</label>
+                  <span id="weight-value">25 Tons</span>
+                </div>
+                <input type="range" id="est-weight" min="5" max="40" value="25" step="1">
+              </div>
+            </div>
+
+            <div class="input-group full-width">
+              <label><i class="fas fa-shield-alt text-gold"></i> Additional Services Included</label>
+              <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; font-size: 0.9rem;">
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" checked disabled accent-color="#f59e0b"> Cargo-In-Transit (GIT) Insurance
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" checked disabled accent-color="#f59e0b"> 24/7 Satellite Tracking
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" checked disabled accent-color="#f59e0b"> Border Customs Agent
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-result-card">
+            <div>
+              <div class="quote-amount-box">
+                <span>Estimated Freight Cost</span>
+                <h3 id="calc-amount">R 48,500</h3>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">*Subject to official customs exchange & fuel levy</p>
+              </div>
+
+              <div class="quote-details-list">
+                <div class="quote-details-item">
+                  <span>Estimated Distance:</span>
+                  <span id="calc-distance">3,500 KM</span>
+                </div>
+                <div class="quote-details-item">
+                  <span>Estimated Transit Time:</span>
+                  <span id="calc-time">6-7 Days</span>
+                </div>
+                <div class="quote-details-item">
+                  <span>Border Clearances:</span>
+                  <span id="calc-borders">3 Borders</span>
+                </div>
+              </div>
+            </div>
+
+            <button id="calc-book-btn" class="btn btn-primary" style="width: 100%;">
+              <i class="fab fa-whatsapp"></i> Lock In Quote via WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Consignment Tracking Demo -->
+  <section id="tracking" class="tracking-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i class="fas fa-search-location"></i> Satellite Visibility</div>
+        <h2>Live Consignment Tracking Demo</h2>
+        <p>Monitor real-time progress, GPS location, and border clearance checkpoints for your trucks.</p>
+      </div>
+
+      <div class="tracking-box">
+        <div class="tracking-input-group">
+          <input type="text" id="track-input" placeholder="Enter Consignment Ref (e.g., MBC-89201 or MBC-77412)" value="MBC-89201">
+          <button id="track-btn" class="btn btn-primary">
+            <i class="fas fa-satellite"></i> Track Cargo
+          </button>
+        </div>
+
+        <div id="tracking-results">
+          <div style="margin-bottom: 1.5rem; text-align: center;">
+            <span class="badge"><i class="fas fa-satellite-dish"></i> Live GPS Feed</span>
+            <h4 style="font-size: 1.2rem; margin-top: 0.5rem;">Superlink Mining Equipment</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Cape Town Depot -> Lubumbashi (DRC)</p>
+          </div>
+
+          <div class="tracking-timeline">
+            <div class="tracking-progress-line" style="width: 75%;"></div>
+            
+            <div class="step-node completed">
+              <div class="step-icon"><i class="fas fa-check"></i></div>
+              <div class="step-title">Cape Town (Ottery)</div>
+              <div class="step-time">20 Jul - Dispatched</div>
+            </div>
+
+            <div class="step-node completed">
+              <div class="step-icon"><i class="fas fa-check"></i></div>
+              <div class="step-title">Johannesburg Hub</div>
+              <div class="step-time">21 Jul - Cleared</div>
+            </div>
+
+            <div class="step-node completed">
+              <div class="step-icon"><i class="fas fa-check"></i></div>
+              <div class="step-title">Beitbridge Customs</div>
+              <div class="step-time">22 Jul - Stamped</div>
+            </div>
+
+            <div class="step-node active">
+              <div class="step-icon"><i class="fas fa-truck-moving"></i></div>
+              <div class="step-title">Kasumbalesa (DRC)</div>
+              <div class="step-time">Active Border Transit</div>
+            </div>
+
+            <div class="step-node">
+              <div class="step-icon"><i class="fas fa-clock"></i></div>
+              <div class="step-title">Lubumbashi Terminal</div>
+              <div class="step-time">ETA: 24 Jul 14:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Office Address Section -->
+  <section id="contact" class="contact-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i class="fas fa-envelope"></i> Get In Touch</div>
+        <h2>Contact Dispatch & Head Office</h2>
+        <p>Connect with our dispatch managers directly for quotes, fleet bookings, and cross-border transport queries.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <h3>Mentor Business Consulting</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Your trusted heavy freight partner across South Africa, the SADC region, and the Democratic Republic of Congo.
+          </p>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info-text">
+              <h4>Headquarters Address</h4>
+              <p>51 Sandown Drive, Ottery, Cape Town, South Africa</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="info-text">
+              <h4>Direct Call Dispatch</h4>
+              <p><a href="tel:0605150440">0605150440</a> / <a href="tel:+27605150440">+27 60 515 0440</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="info-text">
+              <h4>WhatsApp 24/7 Desk</h4>
+              <p><a href="https://wa.me/27605150440" target="_blank">+27 60 515 0440 (Click to Chat)</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="info-text">
+              <h4>Operations & Dispatch Hours</h4>
+              <p>Dispatch Desk: 24/7 Mon - Sun<br>Office: 08:00 - 17:00 Mon - Fri</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <h3 style="margin-bottom: 1.5rem;">Send a Dispatch Request</h3>
+          <form id="main-contact-form">
+            <div class="form-grid">
+              <div class="input-group">
+                <label for="contact-name">Your Full Name</label>
+                <input type="text" id="contact-name" placeholder="John Doe" required>
+              </div>
+
+              <div class="input-group">
+                <label for="contact-phone">Phone / WhatsApp Number</label>
+                <input type="tel" id="contact-phone" placeholder="0605150440" required>
+              </div>
+
+              <div class="input-group full-width">
+                <label for="contact-route">Requested Route</label>
+                <select id="contact-route">
+                  <option value="Cape Town to DRC (Lubumbashi)">Cape Town -> DRC (Lubumbashi/Kolwezi)</option>
+                  <option value="Johannesburg to DRC">Johannesburg -> DRC</option>
+                  <option value="South Africa to Zambia">South Africa -> Zambia (Lusaka/Ndola)</option>
+                  <option value="South Africa to Zimbabwe">South Africa -> Zimbabwe (Harare/Bulawayo)</option>
+                  <option value="South Africa Domestic Interstate">South Africa Domestic Interstate (Cape Town/Joburg/Durban)</option>
+                  <option value="Other SADC Country">Other SADC Country (Botswana, Mozambique, Namibia, Malawi)</option>
+                </select>
+              </div>
+
+              <div class="input-group full-width">
+                <label for="contact-details">Cargo Description & Weight</label>
+                <textarea id="contact-details" rows="4" placeholder="e.g. 30 Tons of mining spares, superlink required, loading next Monday." style="width: 100%; padding: 0.8rem 1rem; background: rgba(11,19,41,0.7); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-main); outline: none; font-family: inherit;" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary full-width" style="margin-top: 1rem;">
+                <i class="fas fa-paper-plane"></i> Submit Request to Dispatch
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-icon">
+              <i class="fas fa-truck-moving"></i>
+            </div>
+            <div class="logo-text">
+              <span class="logo-title">MENTOR</span>
+              <span class="logo-sub">Business Consulting</span>
+            </div>
+          </div>
+          <p>
+            Leading cross-border freight & heavy transport company. Connecting South Africa, the SADC regional market, and extending haulage routes as far as the Democratic Republic of Congo (DRC).
+          </p>
+          <div style="display: flex; gap: 1rem; font-size: 1.2rem; margin-top: 1rem;">
+            <a href="https://wa.me/27605150440" target="_blank" class="text-gold"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="text-gold"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-gold"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Freight Services</a></li>
+            <li><a href="#routes">DRC & SADC Routes</a></li>
+            <li><a href="#fleet">Our Fleet</a></li>
+            <li><a href="#estimator">Rate Estimator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Fleet Services</h4>
+          <ul>
+            <li><a href="#fleet">Superlink Trailers (34T)</a></li>
+            <li><a href="#fleet">Tri-Axle Flatbeds</a></li>
+            <li><a href="#fleet">Heavy Lowbed Haulage</a></li>
+            <li><a href="#fleet">Bulk Side-Tippers</a></li>
+            <li><a href="#fleet">GIT Insured Transport</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Headquarters</h4>
+          <p style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt text-gold"></i> 51 Sandown Drive, Ottery, Cape Town</p>
+          <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone-alt text-gold"></i> <a href="tel:0605150440" style="color: #fff;">0605150440</a></p>
+          <p style="margin-bottom: 0.5rem;"><i class="fab fa-whatsapp text-gold"></i> <a href="https://wa.me/27605150440" target="_blank" style="color: #fff;">+27 60 515 0440</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Mentor Business Consulting. All Rights Reserved. Heavy Transport & Logistics.
+        </div>
+        <div>
+          Cape Town • Johannesburg • Durban • Beitbridge • Kasumbalesa • Lubumbashi (DRC)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/27605150440?text=Hello%20Mentor%20Business%20Consulting,%20I%20am%20interested%20in%20your%20truck%20services." target="_blank" class="whatsapp-float" title="Chat with Dispatch">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Script -->
+  <script src="app.js"></script>
+</body>
+</html>
