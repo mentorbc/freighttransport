@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mentorconsulting.co.za/</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mentorconsulting.co.za/images/logo.png</image:loc>
+      <image:title>Mentor Business Consulting Heavy Freight Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mentorconsulting.co.za/images/superlink_freight_truck.jpg</image:loc>
+      <image:title>Superlink 34 Ton Double Trailer Freight Truck</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mentorconsulting.co.za/images/hero_heavy_truck.jpg</image:loc>
+      <image:title>Heavy Duty Haulage Truck South Africa</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mentorconsulting.co.za/images/logistics_terminal.jpg</image:loc>
+      <image:title>Cape Town Heavy Freight Logistics Terminal</image:title>
+    </image:image>
+  </url>
+</urlset>
