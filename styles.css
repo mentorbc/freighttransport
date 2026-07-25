@@ -731,8 +731,10 @@ img {
 
 .border-chips {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   gap: 0.5rem;
+  width: max-content;
 }
 
 .chip {
@@ -803,10 +805,10 @@ img {
 
 .fleet-filter-bar {
   display: flex;
-  justify-content: center;
   gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: max-content;
 }
 
 .filter-btn {
