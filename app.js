@@ -64,7 +64,7 @@ const routeData = {
   domestic: {
     title: "South Africa Interstate Express Freight",
     transit: "24 - 48 Hours Transit",
-    description: "High-frequency long-haul routes linking Western Cape (Cape Town Depot, Ottery), Gauteng (Johannesburg Hub), KwaZulu-Natal (Durban Port), and Limpopo (Musina border gateway).",
+    description: "High-frequency long-haul routes linking Western Cape (Cape Town Hub), Gauteng (Johannesburg Hub), KwaZulu-Natal (Durban Port), and Limpopo (Musina border gateway).",
     borders: ["Interstate Toll Corridors (N1, N3, N4, N7)"],
     cargoTypes: "Superlink Bulk Freight, Retail Distribution, Heavy Container Transport"
   }
@@ -272,7 +272,7 @@ const mockTrackingDB = {
     route: "Cape Town -> Lubumbashi (DRC)",
     progress: "75%",
     steps: [
-      { name: "Cape Town Depot (Ottery)", time: "20 Jul - Dispatched", done: true },
+      { name: "Cape Town Hub", time: "20 Jul - Dispatched", done: true },
       { name: "Johannesburg Transit Hub", time: "21 Jul - Cleared", done: true },
       { name: "Beitbridge Border Clearance", time: "22 Jul - Cleared", done: true },
       { name: "Kasumbalesa Border (DRC)", time: "In Progress (Customs Inspection)", active: true },
