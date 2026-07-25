@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
+  initMobileBottomNav();
   initRouteExplorer();
   initFleetFilter();
   initFreightEstimator();
@@ -12,11 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterAnimations();
 });
 
-/* 1. Navbar Scroll Effect & Mobile Menu */
+/* 1. Navbar Scroll Effect & Mobile Top Drawer Menu */
 function initNavbar() {
   const navbar = document.querySelector('.navbar');
   const mobileToggle = document.querySelector('.mobile-toggle');
   const navLinks = document.querySelector('.nav-links');
+  const toggleIcon = mobileToggle ? mobileToggle.querySelector('i') : null;
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -26,23 +28,65 @@ function initNavbar() {
     }
   });
 
-  if (mobileToggle) {
+  if (mobileToggle && navLinks) {
     mobileToggle.addEventListener('click', () => {
-      if (navLinks.style.display === 'flex') {
-        navLinks.style.display = 'none';
-      } else {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '85px';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.background = '#0b1329';
-        navLinks.style.padding = '2rem';
-        navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+      navLinks.classList.toggle('active');
+      if (toggleIcon) {
+        if (navLinks.classList.contains('active')) {
+          toggleIcon.className = 'fas fa-xmark';
+        } else {
+          toggleIcon.className = 'fas fa-bars';
+        }
+      }
+    });
+
+    // Close menu when clicking on any nav link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        if (toggleIcon) toggleIcon.className = 'fas fa-bars';
+      });
+    });
+  }
+}
+
+/* 1b. Mobile Sticky Bottom Header Active State & Scroll Spy */
+function initMobileBottomNav() {
+  const bottomItems = document.querySelectorAll('.mobile-nav-item[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
+
+  if (bottomItems.length === 0 || sections.length === 0) return;
+
+  function onScrollSpy() {
+    let current = '';
+    const scrollPosition = window.scrollY + 200;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    bottomItems.forEach(item => {
+      item.classList.remove('active');
+      const href = item.getAttribute('href').substring(1);
+      if (href === current) {
+        item.classList.add('active');
       }
     });
   }
+
+  window.addEventListener('scroll', onScrollSpy);
+
+  bottomItems.forEach(item => {
+    item.addEventListener('click', () => {
+      bottomItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
 }
 
 /* 2. Route Explorer Tabs */
@@ -193,27 +237,20 @@ function initFreightEstimator() {
     // Distance haulage cost calculation
     const distanceCost = distKm * baseRatePerKm * trailerMultiplier * weightFactor;
 
-    // Border clearance fees
-    let borderFee = 0;
+    // Border checkpoints info
     let borderCount = "None (Domestic)";
 
     if (dest.includes("DRC")) {
-      borderFee = 6500;
       borderCount = "3 Borders (Beitbridge, Chirundu, Kasumbalesa)";
     } else if (dest.includes("Zambia")) {
-      borderFee = 4200;
       borderCount = "2 Borders (Beitbridge, Chirundu)";
     } else if (dest.includes("Zimbabwe")) {
-      borderFee = 2500;
       borderCount = "1 Border (Beitbridge)";
     } else if (dest.includes("Botswana")) {
-      borderFee = 2200;
       borderCount = "1 Border (Ramatlabama)";
     } else if (dest.includes("Mozambique")) {
-      borderFee = 2200;
       borderCount = "1 Border (Lebombo)";
     } else if (dest.includes("Namibia")) {
-      borderFee = 2200;
       borderCount = "1 Border (Noordoewer)";
     }
 
@@ -221,15 +258,14 @@ function initFreightEstimator() {
     const declaredGoodsValue = goodsValueSelect ? parseInt(goodsValueSelect.value) : 500000;
     const gitValueFee = Math.round(declaredGoodsValue * 0.0035); // 0.35% value coverage factor
 
-    // Total Freight Rate Estimate
-    const totalCost = Math.round(distanceCost + borderFee + gitValueFee);
+    // Total Freight Rate Estimate (Distance haulage + Goods value GIT factor)
+    const totalCost = Math.round(distanceCost + gitValueFee);
 
     const fmt = new Intl.NumberFormat('en-ZA', { style: 'currency', currency: 'ZAR', maximumFractionDigits: 0 });
 
     resultAmount.textContent = fmt.format(totalCost);
     resultDist.textContent = `${distKm} KM (~${fmt.format(Math.round(distanceCost))})`;
     resultTime.textContent = routeInfo.days;
-    if (resultBorderCost) resultBorderCost.textContent = borderFee > 0 ? fmt.format(borderFee) : "R0 (Domestic)";
     if (resultGitCost) resultGitCost.textContent = fmt.format(gitValueFee);
     resultBorders.textContent = borderCount;
   }
