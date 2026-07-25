@@ -223,18 +223,20 @@
       <div class="routes-container">
         <div class="route-info-box">
           <div class="pressable-hand-badge" id="route-auto-status">
-            <i class="fas fa-hand-pointer"></i> Auto-sliding (Tap tab to freeze)
+            <i class="fas fa-hand-pointer"></i> Sliding words (Tap to pause & select)
           </div>
-          <div class="route-tabs">
-            <button class="route-tab-btn active" data-route="drc">
-              <i class="fas fa-map-marker-alt"></i> DRC Express
-            </button>
-            <button class="route-tab-btn" data-route="sadc">
-              <i class="fas fa-globe"></i> SADC Countries
-            </button>
-            <button class="route-tab-btn" data-route="domestic">
-              <i class="fas fa-road"></i> South Africa Domestic
-            </button>
+          <div class="route-tabs-wrapper">
+            <div class="route-tabs">
+              <button class="route-tab-btn active" data-route="drc">
+                <i class="fas fa-map-marker-alt"></i> DRC Express
+              </button>
+              <button class="route-tab-btn" data-route="sadc">
+                <i class="fas fa-globe"></i> SADC Countries
+              </button>
+              <button class="route-tab-btn" data-route="domestic">
+                <i class="fas fa-road"></i> South Africa Domestic
+              </button>
+            </div>
           </div>
 
           <div class="route-detail-card">
@@ -317,14 +319,16 @@
       </div>
 
       <div class="pressable-hand-badge" id="fleet-auto-status" style="margin: 0 auto 1rem auto;">
-        <i class="fas fa-hand-pointer"></i> Auto-sliding (Tap button to freeze)
+        <i class="fas fa-hand-pointer"></i> Sliding words (Tap to pause & select)
       </div>
-      <div class="fleet-filter-bar">
-        <button class="filter-btn active" data-filter="all">All Vehicles</button>
-        <button class="filter-btn" data-filter="superlink">Superlink 34T</button>
-        <button class="filter-btn" data-filter="flatbed">Flatbeds & Tri-Axles</button>
-        <button class="filter-btn" data-filter="lowbed">Heavy Lowbeds</button>
-        <button class="filter-btn" data-filter="tipper">Side-Tippers</button>
+      <div class="fleet-filter-wrapper">
+        <div class="fleet-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Vehicles</button>
+          <button class="filter-btn" data-filter="superlink">Superlink 34T</button>
+          <button class="filter-btn" data-filter="flatbed">Flatbeds & Tri-Axles</button>
+          <button class="filter-btn" data-filter="lowbed">Heavy Lowbeds</button>
+          <button class="filter-btn" data-filter="tipper">Side-Tippers</button>
+        </div>
       </div>
 
       <div class="fleet-grid">
