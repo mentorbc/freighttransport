@@ -1463,25 +1463,53 @@ footer {
     font-size: 1.1rem;
   }
 
+  /* Scroll Hints for Sliding Options */
+  .scroll-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
+  }
+
   /* Services Grid */
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1.2rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .service-card {
     padding: 1.2rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   /* Routes Explorer */
   .routes-container {
     grid-template-columns: 1fr;
     gap: 1.4rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .route-info-box, .route-visual-card {
-    padding: 1.1rem;
+    padding: 1rem;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .route-tabs {
@@ -1489,13 +1517,14 @@ footer {
     overflow-x: auto;
     white-space: nowrap;
     flex-wrap: nowrap;
-    padding-bottom: 0.5rem;
-    padding-right: 1.5rem;
-    gap: 0.4rem;
+    padding: 0.4rem 0.5rem 0.6rem 0.5rem;
+    gap: 0.5rem;
     width: 100%;
     max-width: 100%;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    box-sizing: border-box;
   }
 
   .route-tabs::-webkit-scrollbar {
@@ -1504,8 +1533,9 @@ footer {
 
   .route-tab-btn {
     flex-shrink: 0;
-    padding: 0.45rem 0.8rem;
-    font-size: 0.8rem;
+    scroll-snap-align: start;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
   }
 
   .route-header-tag {
@@ -1544,11 +1574,14 @@ footer {
     gap: 0.65rem;
     min-width: 0;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .map-node-info {
     min-width: 0;
     flex: 1;
+    overflow: hidden;
   }
 
   .map-node-info h4 {
@@ -1571,13 +1604,14 @@ footer {
     white-space: nowrap;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    padding-bottom: 0.5rem;
-    padding-right: 1.5rem;
-    gap: 0.4rem;
+    padding: 0.4rem 0.5rem 0.6rem 0.5rem;
+    gap: 0.5rem;
     width: 100%;
     max-width: 100%;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    box-sizing: border-box;
   }
 
   .fleet-filter-bar::-webkit-scrollbar {
@@ -1586,8 +1620,9 @@ footer {
 
   .filter-btn {
     flex-shrink: 0;
-    padding: 0.45rem 0.8rem;
-    font-size: 0.8rem;
+    scroll-snap-align: start;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
   }
 
   .fleet-grid {
