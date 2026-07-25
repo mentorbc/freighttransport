@@ -114,6 +114,62 @@ const routeData = {
   }
 };
 
+/* Helper: Smooth Horizontal Word Ticker (Slides ONLY option words inside container, NEVER moves page) */
+function initWordSlider(container, statusBadgeId) {
+  if (!container) return;
+
+  let speed = 0.7; // Smooth slow sliding speed
+  let direction = 1; // 1 = forward, -1 = backward
+  let isPaused = false;
+  let pauseTimer = null;
+  const statusBadge = document.getElementById(statusBadgeId);
+
+  function slideWords() {
+    if (!isPaused && container.scrollWidth > container.clientWidth) {
+      container.scrollLeft += speed * direction;
+
+      if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 1) {
+        direction = -1;
+      } else if (container.scrollLeft <= 0) {
+        direction = 1;
+      }
+    }
+    requestAnimationFrame(slideWords);
+  }
+
+  requestAnimationFrame(slideWords);
+
+  function pauseSliding() {
+    isPaused = true;
+    if (statusBadge) {
+      statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Pressable (Paused — Tap to select)`;
+      statusBadge.classList.add('user-active');
+    }
+    if (pauseTimer) clearTimeout(pauseTimer);
+    pauseTimer = setTimeout(() => {
+      isPaused = false;
+      if (statusBadge) {
+        statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Sliding words (Tap to pause & select)`;
+        statusBadge.classList.remove('user-active');
+      }
+    }, 4500);
+  }
+
+  container.addEventListener('mouseenter', pauseSliding);
+  container.addEventListener('mouseleave', () => {
+    pauseTimer = setTimeout(() => { isPaused = false; }, 2000);
+  });
+  container.addEventListener('touchstart', pauseSliding, { passive: true });
+  container.addEventListener('touchend', () => {
+    pauseTimer = setTimeout(() => { isPaused = false; }, 3500);
+  });
+
+  if (statusBadge) {
+    statusBadge.addEventListener('click', pauseSliding);
+  }
+}
+
+/* 2. Route Explorer Tabs with Card Animations & Sliding Words */
 function initRouteExplorer() {
   const routeButtons = document.querySelectorAll('.route-tab-btn');
   const routeDetailCard = document.querySelector('.route-detail-card');
@@ -122,204 +178,80 @@ function initRouteExplorer() {
   const descEl = document.getElementById('route-desc');
   const bordersEl = document.getElementById('route-borders');
   const cargoEl = document.getElementById('route-cargo');
-  const statusBadge = document.getElementById('route-auto-status');
   const routeTabsContainer = document.querySelector('.route-tabs');
 
   if (routeButtons.length === 0) return;
 
-  const routes = Array.from(routeButtons).map(btn => btn.dataset.route);
-  let currentIndex = 0;
-  let autoTimer = null;
-  let userPaused = false;
-  let pauseTimeout = null;
-
-  function updateRoute(routeKey, animate = true) {
-    const data = routeData[routeKey];
-    if (!data) return;
-
-    routeButtons.forEach(btn => {
-      if (btn.dataset.route === routeKey) {
-        btn.classList.add('active');
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-
-    if (animate && routeDetailCard) {
-      routeDetailCard.classList.remove('animate-in');
-      routeDetailCard.classList.add('animate-out');
-
-      setTimeout(() => {
-        titleEl.textContent = data.title;
-        transitEl.textContent = data.transit;
-        descEl.textContent = data.description;
-        cargoEl.textContent = data.cargoTypes;
-        bordersEl.innerHTML = data.borders.map(border => `<span class="chip"><i class="fas fa-passport"></i> ${border}</span>`).join('');
-
-        routeDetailCard.classList.remove('animate-out');
-        routeDetailCard.classList.add('animate-in');
-      }, 200);
-    } else {
-      titleEl.textContent = data.title;
-      transitEl.textContent = data.transit;
-      descEl.textContent = data.description;
-      cargoEl.textContent = data.cargoTypes;
-      bordersEl.innerHTML = data.borders.map(border => `<span class="chip"><i class="fas fa-passport"></i> ${border}</span>`).join('');
-    }
-  }
-
-  function startAutoSlide() {
-    stopAutoSlide();
-    autoTimer = setInterval(() => {
-      if (userPaused) return;
-      currentIndex = (currentIndex + 1) % routes.length;
-      updateRoute(routes[currentIndex], true);
-    }, 4000);
-  }
-
-  function stopAutoSlide() {
-    if (autoTimer) clearInterval(autoTimer);
-  }
-
-  function handleUserInteraction() {
-    userPaused = true;
-    if (statusBadge) {
-      statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Pressable (Paused for selection)`;
-      statusBadge.classList.add('user-active');
-    }
-    if (pauseTimeout) clearTimeout(pauseTimeout);
-    pauseTimeout = setTimeout(() => {
-      userPaused = false;
-      if (statusBadge) {
-        statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Auto-sliding (Tap tab to freeze)`;
-        statusBadge.classList.remove('user-active');
-      }
-    }, 8000);
-  }
-
-  routeButtons.forEach((btn, index) => {
+  routeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      currentIndex = index;
-      handleUserInteraction();
-      updateRoute(btn.dataset.route, true);
+      routeButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const routeKey = btn.dataset.route;
+      const data = routeData[routeKey];
+
+      if (data && routeDetailCard) {
+        routeDetailCard.classList.remove('animate-in');
+        routeDetailCard.classList.add('animate-out');
+
+        setTimeout(() => {
+          titleEl.textContent = data.title;
+          transitEl.textContent = data.transit;
+          descEl.textContent = data.description;
+          cargoEl.textContent = data.cargoTypes;
+          bordersEl.innerHTML = data.borders.map(border => `<span class="chip"><i class="fas fa-passport"></i> ${border}</span>`).join('');
+
+          routeDetailCard.classList.remove('animate-out');
+          routeDetailCard.classList.add('animate-in');
+        }, 200);
+      }
     });
   });
 
-  if (routeTabsContainer) {
-    routeTabsContainer.addEventListener('touchstart', handleUserInteraction, { passive: true });
-    routeTabsContainer.addEventListener('mouseenter', handleUserInteraction);
-  }
-
-  if (statusBadge) {
-    statusBadge.addEventListener('click', handleUserInteraction);
-  }
-
-  startAutoSlide();
+  // Start smooth horizontal sliding of option words track ONLY
+  initWordSlider(routeTabsContainer, 'route-auto-status');
 }
 
-/* 3. Fleet Showcase Filter with Automatic Slide & Card Animations */
+/* 3. Fleet Showcase Filter with Card Animations & Sliding Words */
 function initFleetFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const fleetCards = document.querySelectorAll('.fleet-card');
   const fleetGrid = document.querySelector('.fleet-grid');
-  const statusBadge = document.getElementById('fleet-auto-status');
   const filterBarContainer = document.querySelector('.fleet-filter-bar');
 
   if (filterBtns.length === 0) return;
 
-  const categories = Array.from(filterBtns).map(btn => btn.dataset.filter);
-  let currentIndex = 0;
-  let autoTimer = null;
-  let userPaused = false;
-  let pauseTimeout = null;
-
-  function filterFleet(category, animate = true) {
-    filterBtns.forEach(btn => {
-      if (btn.dataset.filter === category) {
-        btn.classList.add('active');
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-
-    if (animate && fleetGrid) {
-      fleetCards.forEach(card => {
-        card.classList.remove('animate-in');
-        card.classList.add('animate-out');
-      });
-
-      setTimeout(() => {
-        fleetCards.forEach(card => {
-          if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-            card.classList.remove('animate-out');
-            card.classList.add('animate-in');
-          } else {
-            card.style.display = 'none';
-            card.classList.remove('animate-out');
-          }
-        });
-      }, 200);
-    } else {
-      fleetCards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-  }
-
-  function startAutoSlide() {
-    stopAutoSlide();
-    autoTimer = setInterval(() => {
-      if (userPaused) return;
-      currentIndex = (currentIndex + 1) % categories.length;
-      filterFleet(categories[currentIndex], true);
-    }, 4500);
-  }
-
-  function stopAutoSlide() {
-    if (autoTimer) clearInterval(autoTimer);
-  }
-
-  function handleUserInteraction() {
-    userPaused = true;
-    if (statusBadge) {
-      statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Pressable (Paused for selection)`;
-      statusBadge.classList.add('user-active');
-    }
-    if (pauseTimeout) clearTimeout(pauseTimeout);
-    pauseTimeout = setTimeout(() => {
-      userPaused = false;
-      if (statusBadge) {
-        statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Auto-sliding (Tap button to freeze)`;
-        statusBadge.classList.remove('user-active');
-      }
-    }, 8000);
-  }
-
-  filterBtns.forEach((btn, index) => {
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      currentIndex = index;
-      handleUserInteraction();
-      filterFleet(btn.dataset.filter, true);
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.dataset.filter;
+
+      if (fleetGrid) {
+        fleetCards.forEach(card => {
+          card.classList.remove('animate-in');
+          card.classList.add('animate-out');
+        });
+
+        setTimeout(() => {
+          fleetCards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+              card.style.display = 'block';
+              card.classList.remove('animate-out');
+              card.classList.add('animate-in');
+            } else {
+              card.style.display = 'none';
+              card.classList.remove('animate-out');
+            }
+          });
+        }, 200);
+      }
     });
   });
 
-  if (filterBarContainer) {
-    filterBarContainer.addEventListener('touchstart', handleUserInteraction, { passive: true });
-    filterBarContainer.addEventListener('mouseenter', handleUserInteraction);
-  }
-
-  if (statusBadge) {
-    statusBadge.addEventListener('click', handleUserInteraction);
-  }
-
-  startAutoSlide();
+  // Start smooth horizontal sliding of option words track ONLY
+  initWordSlider(filterBarContainer, 'fleet-auto-status');
 }
 
 /* 4. Interactive Freight Rate Estimator */
