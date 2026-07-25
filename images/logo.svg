@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <!-- Color Gradients -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#152243" />
+      <stop offset="100%" stop-color="#0b1329" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e28714" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3" flood-color="#000" />
+    </filter>
+  </defs>
+
+  <!-- Group: Africa Map Background Silhouette -->
+  <g id="africa-map" transform="translate(260, 20) scale(1.15)">
+    <!-- Northern/Central Africa (Light Gray) -->
+    <path d="M 90,30 Q 140,25 190,45 Q 230,70 240,110 Q 250,140 230,165 Q 210,180 180,180 Q 150,180 130,200 Q 110,220 80,210 Q 50,200 40,160 Q 30,120 50,80 Z" fill="#d1d5db" opacity="0.8" />
+    <!-- Southern Africa (Amber Gold & Dark Navy Highlight) -->
+    <path d="M 130,200 Q 170,185 210,220 Q 230,250 200,290 Q 170,320 140,310 Q 110,290 100,250 Z" fill="url(#goldGrad)" opacity="0.9" />
+    <path d="M 120,270 Q 160,260 170,290 Q 150,315 130,310 Z" fill="#0b1329" />
+    <!-- Madagascar Island -->
+    <path d="M 245,240 Q 255,230 250,270 Q 240,285 242,250 Z" fill="#9ca3af" />
+  </g>
+
+  <!-- Group: Dynamic Upward Arrow -->
+  <g id="upward-arrow" filter="url(#dropShadow)">
+    <polygon points="460,200 580,40 540,40 575,40 575,75 550,75 580,40" fill="none" />
+    <!-- Arrow Body -->
+    <path d="M 450,170 L 570,50 L 520,50 L 580,35 L 580,95 L 555,70 L 435,190 Z" fill="url(#arrowGrad)" />
+    <!-- Arrow Dark Shadow Accent -->
+    <path d="M 435,190 L 555,70 L 575,90 L 455,210 Z" fill="#0b1329" />
+  </g>
+
+  <!-- Group: Heavy Freight Truck & Superlink Trailer -->
+  <g id="heavy-truck" transform="translate(180, 70)" filter="url(#dropShadow)">
+    <!-- Speed Motion Lines behind Trailer -->
+    <path d="M 330,170 L 450,170 M 340,180 L 460,180 M 320,190 L 440,190 M 350,200 L 470,200" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" />
+    <path d="M 310,165 L 430,165 M 330,175 L 450,175 M 320,185 L 440,185" stroke="#0b1329" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Superlink Trailer Body (Dark Navy & Gold Stripes) -->
+    <path d="M 140,70 L 350,105 L 340,200 L 140,190 Z" fill="#152243" stroke="#ffffff" stroke-width="2" />
+    <!-- Trailer Stripes -->
+    <path d="M 140,110 L 347,135 L 345,150 L 140,125 Z" fill="#ffffff" />
+    <path d="M 140,125 L 345,150 L 343,165 L 140,140 Z" fill="url(#goldGrad)" />
+    <path d="M 140,140 L 343,165 L 341,180 L 140,155 Z" fill="#ffffff" />
+
+    <!-- Truck Cabin Main Body (Heavy Duty Front) -->
+    <path d="M 80,60 L 130,55 L 150,70 L 140,190 L 40,190 L 25,160 L 30,120 L 70,110 Z" fill="#0b1329" stroke="#ffffff" stroke-width="2" />
+
+    <!-- Exhaust Smoke Stacks -->
+    <rect x="75" y="25" width="8" height="40" rx="3" fill="#9ca3af" />
+    <rect x="135" y="20" width="8" height="40" rx="3" fill="#9ca3af" />
+
+    <!-- Cabin Windshield & Side Window -->
+    <path d="M 75,70 L 115,67 L 125,100 L 75,100 Z" fill="#ffffff" opacity="0.9" />
+    <path d="M 40,125 L 65,115 L 65,145 L 40,145 Z" fill="#f59e0b" opacity="0.8" />
+
+    <!-- Chrome Front Grill & Headlights -->
+    <rect x="30" y="145" width="30" height="35" fill="#e5e7eb" stroke="#0b1329" stroke-width="2" />
+    <line x1="38" y1="145" x2="38" y2="180" stroke="#0b1329" stroke-width="2" />
+    <line x1="45" y1="145" x2="45" y2="180" stroke="#0b1329" stroke-width="2" />
+    <line x1="52" y1="145" x2="52" y2="180" stroke="#0b1329" stroke-width="2" />
+    
+    <!-- Headlight (Golden Glow) -->
+    <circle cx="26" cy="140" r="7" fill="#fbbf24" stroke="#ffffff" stroke-width="1.5" />
+    <circle cx="68" cy="182" r="5" fill="#fbbf24" opacity="0.9" />
+
+    <!-- Heavy Duty Wheels & Rims -->
+    <!-- Front Wheel -->
+    <circle cx="60" cy="195" r="22" fill="#0b1329" stroke="#ffffff" stroke-width="3" />
+    <circle cx="60" cy="195" r="10" fill="url(#goldGrad)" />
+    <!-- Rear Dual Wheels -->
+    <circle cx="160" cy="195" r="18" fill="#0b1329" stroke="#ffffff" stroke-width="2" />
+    <circle cx="160" cy="195" r="8" fill="#e5e7eb" />
+
+    <circle cx="200" cy="197" r="18" fill="#0b1329" stroke="#ffffff" stroke-width="2" />
+    <circle cx="200" cy="197" r="8" fill="#e5e7eb" />
+
+    <circle cx="280" cy="200" r="18" fill="#0b1329" stroke="#ffffff" stroke-width="2" />
+    <circle cx="280" cy="200" r="8" fill="url(#goldGrad)" />
+
+    <circle cx="320" cy="202" r="18" fill="#0b1329" stroke="#ffffff" stroke-width="2" />
+    <circle cx="320" cy="202" r="8" fill="url(#goldGrad)" />
+
+    <!-- Highway Ground Shadow Curve -->
+    <path d="M 10,215 Q 200,225 450,205 L 430,225 Q 200,240 10,225 Z" fill="#0b1329" opacity="0.8" />
+    <path d="M 20,220 Q 200,230 420,210" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+  <!-- Group: Typography (Exact Brand Text) -->
+  <g id="company-text" transform="translate(400, 365)" text-anchor="middle">
+    <!-- Top Main Title: MENTOR BUSINESS CONSULTING -->
+    <text x="0" y="0" font-family="'Plus Jakarta Sans', 'Arial Black', Impact, sans-serif" font-weight="900" font-size="38" fill="#0b1329" letter-spacing="1.5">
+      MENTOR BUSINESS CONSULTING
+    </text>
+    
+    <!-- Bottom Tagline: TRUCK SERVICES | LOGISTICS -->
+    <text x="0" y="42" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="800" font-size="24" fill="#152243" letter-spacing="4">
+      TRUCK SERVICES <tspan fill="#f59e0b">|</tspan> LOGISTICS
+    </text>
+  </g>
+</svg>

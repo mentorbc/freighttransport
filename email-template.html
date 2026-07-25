@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freight Dispatch Confirmation | Mentor Business Consulting</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #0b1329;
+      color: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 650px;
+      margin: 20px auto;
+      background: #152243;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .email-header {
+      background: #0b1329;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid #f59e0b;
+    }
+    .email-header img {
+      max-width: 220px;
+      height: auto;
+    }
+    .email-body {
+      padding: 30px;
+    }
+    .greeting {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .subtext {
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+    .quote-box {
+      background: #1e2c52;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+    .quote-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+    }
+    .quote-row:last-child {
+      border-bottom: none;
+    }
+    .label {
+      color: #94a3b8;
+    }
+    .value {
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .price-highlight {
+      font-size: 24px;
+      color: #f59e0b;
+      font-weight: 800;
+      text-align: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px dashed rgba(245, 158, 11, 0.4);
+    }
+    .cta-button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px 0;
+      border-radius: 6px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+    .email-footer {
+      background: #060b18;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-links a {
+      color: #f59e0b;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <!-- Header with SVG Logo -->
+    <div class="email-header">
+      <img src="images/logo.svg" alt="Mentor Business Consulting Logo">
+      <div style="font-size: 13px; color: #f59e0b; font-weight: 700; letter-spacing: 2px; margin-top: 8px;">
+        TRUCK SERVICES | SADC & DRC LOGISTICS
+      </div>
+    </div>
+
+    <!-- Email Body -->
+    <div class="email-body">
+      <div class="greeting">Freight Quotation & Dispatch Confirmation</div>
+      <p class="subtext">
+        Thank you for contacting <strong>Mentor Business Consulting</strong>. Below are your haulage calculation details based on your requested route corridor and tonnage requirements.
+      </p>
+
+      <div class="quote-box">
+        <div class="quote-row">
+          <span class="label">Dispatch Origin:</span>
+          <span class="value">Cape Town Hub (Ottery)</span>
+        </div>
+        <div class="quote-row">
+          <span class="label">Destination:</span>
+          <span class="value">Lubumbashi (DRC)</span>
+        </div>
+        <div class="quote-row">
+          <span class="label">Trailer Configuration:</span>
+          <span class="value">34-Ton Superlink Double Trailer</span>
+        </div>
+        <div class="quote-row">
+          <span class="label">Base Rate Metric:</span>
+          <span class="value">~R80 / KM Standard Base Haulage</span>
+        </div>
+        <div class="quote-row">
+          <span class="label">Border Clearances:</span>
+          <span class="value">3 Borders (Beitbridge, Chirundu, Kasumbalesa)</span>
+        </div>
+        
+        <div class="price-highlight">
+          Estimated Total Rate: ZAR R 280,000
+        </div>
+      </div>
+
+      <p class="subtext" style="font-size: 13px; text-align: center;">
+        *Includes 24/7 Satellite GPS Tracking, Customs Agents at Beitbridge & Kasumbalesa, and Full Cargo-In-Transit (GIT) Coverage.
+      </p>
+
+      <a href="https://wa.me/27605150440?text=Hello%20Mentor%20Business%20Consulting,%20I%20would%20like%20to%20confirm%20my%20freight%20booking." class="cta-button" target="_blank">
+        📲 Confirm Booking via WhatsApp Dispatch
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="email-footer">
+      <p style="margin-bottom: 8px;"><strong>Mentor Business Consulting</strong> • Heavy Transport & Cross-Border Logistics</p>
+      <p style="margin-bottom: 8px;">📍 Ottery, Cape Town | 📞 Call Dispatch: 0605150440 | 💬 WhatsApp: +27 60 515 0440</p>
+      <div class="footer-links">
+        <a href="https://mentorconsulting.co.za">Visit Website</a> | 
+        <a href="https://mentorconsulting.co.za/#estimator">Rate Estimator</a> | 
+        <a href="https://mentorconsulting.co.za/#tracking">Live Consignment Tracking</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
