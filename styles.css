@@ -731,18 +731,26 @@ img {
 
 .border-chips {
   display: flex;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  gap: 0.5rem;
-  width: max-content;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  width: 100%;
+  margin-top: 0.4rem;
 }
 
 .chip {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
   color: var(--text-main);
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: normal;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .route-visual-card {

@@ -178,8 +178,7 @@ function initRouteExplorer() {
           transitEl.textContent = data.transit;
           descEl.textContent = data.description;
           cargoEl.textContent = data.cargoTypes;
-          const chipsHtml = data.borders.map(border => `<span class="chip"><i class="fas fa-passport"></i> ${border}</span>`).join('');
-          bordersEl.innerHTML = chipsHtml + chipsHtml;
+          bordersEl.innerHTML = data.borders.map(border => `<span class="chip"><i class="fas fa-passport"></i> ${border}</span>`).join('');
 
           routeDetailCard.classList.remove('animate-out');
           routeDetailCard.classList.add('animate-in');
