@@ -444,15 +444,29 @@
               <div class="range-slider-wrapper">
                 <div class="range-header">
                   <label><i class="fas fa-weight-hanging text-gold"></i> Cargo Weight</label>
-                  <span id="weight-value">25 Tons</span>
+                  <span id="weight-value">34 Tons</span>
                 </div>
-                <input type="range" id="est-weight" min="5" max="40" value="25" step="1">
+                <input type="range" id="est-weight" min="5" max="50" value="34" step="1">
               </div>
+            </div>
+
+            <div class="input-group full-width">
+              <label for="est-goods-value"><i class="fas fa-coins text-gold"></i> Declared Goods / Cargo Value</label>
+              <select id="est-goods-value">
+                <option value="250000">R 250,000 (Standard Commercial Goods)</option>
+                <option value="500000" selected>R 500,000 (High Value Commercial Cargo)</option>
+                <option value="1000000">R 1,000,000 (Mining Spares / Heavy Industrial)</option>
+                <option value="2500000">R 2,500,000 (High-Grade Equipment)</option>
+                <option value="5000000">R 5,000,000+ (Abnormal / Premium Mining Plant)</option>
+              </select>
             </div>
 
             <div class="input-group full-width">
               <label><i class="fas fa-shield-alt text-gold"></i> Additional Services Included</label>
               <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; font-size: 0.9rem;">
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                  <input type="checkbox" checked disabled accent-color="#f59e0b"> R80/KM Standard Base Rate
+                </label>
                 <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
                   <input type="checkbox" checked disabled accent-color="#f59e0b"> Cargo-In-Transit (GIT) Insurance
                 </label>
@@ -470,18 +484,26 @@
             <div>
               <div class="quote-amount-box">
                 <span>Estimated Freight Cost</span>
-                <h3 id="calc-amount">R 48,500</h3>
-                <p style="font-size: 0.75rem; color: var(--text-muted);">*Subject to official customs exchange & fuel levy</p>
+                <h3 id="calc-amount">R 280,000</h3>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">*R80/KM base rate + border & value factors</p>
               </div>
 
               <div class="quote-details-list">
                 <div class="quote-details-item">
-                  <span>Estimated Distance:</span>
+                  <span>Distance Haulage (Base ~R80/km):</span>
                   <span id="calc-distance">3,500 KM</span>
                 </div>
                 <div class="quote-details-item">
                   <span>Estimated Transit Time:</span>
                   <span id="calc-time">6-7 Days</span>
+                </div>
+                <div class="quote-details-item">
+                  <span>Est. Border & Clearing Costs:</span>
+                  <span id="calc-border-cost">R 6,500</span>
+                </div>
+                <div class="quote-details-item">
+                  <span>Goods Value GIT Surcharge:</span>
+                  <span id="calc-git-cost">R 2,000</span>
                 </div>
                 <div class="quote-details-item">
                   <span>Border Clearances:</span>

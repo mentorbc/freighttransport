@@ -158,10 +158,13 @@ function initFreightEstimator() {
   const trailerSelect = document.getElementById('est-trailer');
   const weightInput = document.getElementById('est-weight');
   const weightVal = document.getElementById('weight-value');
+  const goodsValueSelect = document.getElementById('est-goods-value');
 
   const resultAmount = document.getElementById('calc-amount');
   const resultDist = document.getElementById('calc-distance');
   const resultTime = document.getElementById('calc-time');
+  const resultBorderCost = document.getElementById('calc-border-cost');
+  const resultGitCost = document.getElementById('calc-git-cost');
   const resultBorders = document.getElementById('calc-borders');
   const bookBtn = document.getElementById('calc-book-btn');
 
@@ -173,28 +176,61 @@ function initFreightEstimator() {
     const tons = parseInt(weightInput.value);
     weightVal.textContent = `${tons} Tons`;
 
-    const routeInfo = (routeMatrix[origin] && routeMatrix[origin][dest]) || { dist: 2200, days: "4-5 Days", ratePerTon: 1500 };
+    const routeInfo = (routeMatrix[origin] && routeMatrix[origin][dest]) || { dist: 2200, days: "4-5 Days" };
+    const distKm = routeInfo.dist;
 
-    let trailerMultiplier = 1.0;
-    if (trailerSelect.value === 'lowbed') trailerMultiplier = 1.35;
-    if (trailerSelect.value === 'sdetipper') trailerMultiplier = 1.15;
-    if (trailerSelect.value === 'superlink') trailerMultiplier = 0.95;
-
-    const baseCost = routeInfo.ratePerTon * tons * trailerMultiplier;
-    const formattedCost = new Intl.NumberFormat('en-ZA', { style: 'currency', currency: 'ZAR', maximumFractionDigits: 0 }).format(baseCost);
-
-    resultAmount.textContent = formattedCost;
-    resultDist.textContent = `${routeInfo.dist} KM`;
-    resultTime.textContent = routeInfo.days;
-
-    let borderCount = "None (Domestic)";
-    if (dest.includes("DRC")) borderCount = "3 Borders (Beitbridge, Chirundu, Kasumbalesa)";
-    else if (dest.includes("Zambia")) borderCount = "2 Borders (Beitbridge, Chirundu)";
-    else if (dest.includes("Zimbabwe")) borderCount = "1 Border (Beitbridge)";
-    else if (dest.includes("Botswana")) borderCount = "1 Border (Ramatlabama)";
-    else if (dest.includes("Mozambique")) borderCount = "1 Border (Lebombo)";
-    else if (dest.includes("Namibia")) borderCount = "1 Border (Noordoewer)";
+    // Base Rate: ~R80 per KM for standard 34 Ton trailer
+    const baseRatePerKm = 80;
     
+    let trailerMultiplier = 1.0;
+    if (trailerSelect.value === 'lowbed') trailerMultiplier = 1.35; // Heavy abnormal trailer
+    if (trailerSelect.value === 'sdetipper') trailerMultiplier = 1.15; // Bulk side-tipper
+    if (trailerSelect.value === 'flatbed') trailerMultiplier = 0.95; // Tri-axle flatbed
+
+    // Weight factor relative to standard 34T load
+    const weightFactor = tons / 34;
+
+    // Distance haulage cost calculation
+    const distanceCost = distKm * baseRatePerKm * trailerMultiplier * weightFactor;
+
+    // Border clearance fees
+    let borderFee = 0;
+    let borderCount = "None (Domestic)";
+
+    if (dest.includes("DRC")) {
+      borderFee = 6500;
+      borderCount = "3 Borders (Beitbridge, Chirundu, Kasumbalesa)";
+    } else if (dest.includes("Zambia")) {
+      borderFee = 4200;
+      borderCount = "2 Borders (Beitbridge, Chirundu)";
+    } else if (dest.includes("Zimbabwe")) {
+      borderFee = 2500;
+      borderCount = "1 Border (Beitbridge)";
+    } else if (dest.includes("Botswana")) {
+      borderFee = 2200;
+      borderCount = "1 Border (Ramatlabama)";
+    } else if (dest.includes("Mozambique")) {
+      borderFee = 2200;
+      borderCount = "1 Border (Lebombo)";
+    } else if (dest.includes("Namibia")) {
+      borderFee = 2200;
+      borderCount = "1 Border (Noordoewer)";
+    }
+
+    // Goods declared value factor (Risk & GIT coverage)
+    const declaredGoodsValue = goodsValueSelect ? parseInt(goodsValueSelect.value) : 500000;
+    const gitValueFee = Math.round(declaredGoodsValue * 0.0035); // 0.35% value coverage factor
+
+    // Total Freight Rate Estimate
+    const totalCost = Math.round(distanceCost + borderFee + gitValueFee);
+
+    const fmt = new Intl.NumberFormat('en-ZA', { style: 'currency', currency: 'ZAR', maximumFractionDigits: 0 });
+
+    resultAmount.textContent = fmt.format(totalCost);
+    resultDist.textContent = `${distKm} KM (~${fmt.format(Math.round(distanceCost))})`;
+    resultTime.textContent = routeInfo.days;
+    if (resultBorderCost) resultBorderCost.textContent = borderFee > 0 ? fmt.format(borderFee) : "R0 (Domestic)";
+    if (resultGitCost) resultGitCost.textContent = fmt.format(gitValueFee);
     resultBorders.textContent = borderCount;
   }
 
@@ -202,6 +238,7 @@ function initFreightEstimator() {
   destSelect.addEventListener('change', calculateQuote);
   trailerSelect.addEventListener('change', calculateQuote);
   weightInput.addEventListener('input', calculateQuote);
+  if (goodsValueSelect) goodsValueSelect.addEventListener('change', calculateQuote);
 
   calculateQuote();
 
@@ -211,14 +248,16 @@ function initFreightEstimator() {
       const dest = destSelect.value;
       const tons = weightInput.value;
       const trailer = trailerSelect.options[trailerSelect.selectedIndex].text;
+      const goodsValText = goodsValueSelect ? goodsValueSelect.options[goodsValueSelect.selectedIndex].text : "Declared Cargo";
       const quote = resultAmount.textContent;
 
-      const message = `Hello Mentor Business Consulting! I would like to lock in a quote estimate:%0A` +
+      const message = `Hello Mentor Business Consulting! I would like to lock in a quote estimate based on R80/km pricing:%0A` +
                       `📍 *Origin:* ${origin}%0A` +
                       `🏁 *Destination:* ${dest}%0A` +
                       `🚛 *Trailer Type:* ${trailer}%0A` +
                       `⚖️ *Weight:* ${tons} Tons%0A` +
-                      `💰 *Est. Rate:* ${quote}%0A%0APlease contact me with official clearance options.`;
+                      `💎 *Declared Cargo Value:* ${goodsValText}%0A` +
+                      `💰 *Est. Total Rate:* ${quote}%0A%0APlease contact me to finalize border clearance & dispatch.`;
       
       window.open(`https://wa.me/27605150440?text=${message}`, '_blank');
       showToast("Redirecting to Dispatch Team via WhatsApp...");
