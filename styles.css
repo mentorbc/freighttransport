@@ -297,6 +297,80 @@ img {
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
 }
 
+/* Card & Content In/Out Animations */
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+  }
+}
+
+.animate-in {
+  animation: cardSlideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-out {
+  animation: cardSlideOut 0.2s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+/* Pressable Hand Badge Indicator */
+.pressable-hand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.pressable-hand-badge i {
+  font-size: 0.95rem;
+  color: var(--accent-gold);
+  animation: handTap 1.6s infinite ease-in-out;
+}
+
+.pressable-hand-badge.user-active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+}
+
+.pressable-hand-badge.user-active i {
+  color: #10b981;
+}
+
+@keyframes handTap {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.15);
+  }
+}
+
 .mobile-toggle {
   display: none;
   font-size: 1.5rem;

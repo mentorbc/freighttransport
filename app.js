@@ -116,44 +116,153 @@ const routeData = {
 
 function initRouteExplorer() {
   const routeButtons = document.querySelectorAll('.route-tab-btn');
+  const routeDetailCard = document.querySelector('.route-detail-card');
   const titleEl = document.getElementById('route-title');
   const transitEl = document.getElementById('route-transit');
   const descEl = document.getElementById('route-desc');
   const bordersEl = document.getElementById('route-borders');
   const cargoEl = document.getElementById('route-cargo');
+  const statusBadge = document.getElementById('route-auto-status');
+  const routeTabsContainer = document.querySelector('.route-tabs');
 
-  routeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      routeButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  if (routeButtons.length === 0) return;
 
-      const routeKey = btn.dataset.route;
-      const data = routeData[routeKey];
+  const routes = Array.from(routeButtons).map(btn => btn.dataset.route);
+  let currentIndex = 0;
+  let autoTimer = null;
+  let userPaused = false;
+  let pauseTimeout = null;
 
-      if (data) {
+  function updateRoute(routeKey, animate = true) {
+    const data = routeData[routeKey];
+    if (!data) return;
+
+    routeButtons.forEach(btn => {
+      if (btn.dataset.route === routeKey) {
+        btn.classList.add('active');
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    if (animate && routeDetailCard) {
+      routeDetailCard.classList.remove('animate-in');
+      routeDetailCard.classList.add('animate-out');
+
+      setTimeout(() => {
         titleEl.textContent = data.title;
         transitEl.textContent = data.transit;
         descEl.textContent = data.description;
         cargoEl.textContent = data.cargoTypes;
-
         bordersEl.innerHTML = data.borders.map(border => `<span class="chip"><i class="fas fa-passport"></i> ${border}</span>`).join('');
+
+        routeDetailCard.classList.remove('animate-out');
+        routeDetailCard.classList.add('animate-in');
+      }, 200);
+    } else {
+      titleEl.textContent = data.title;
+      transitEl.textContent = data.transit;
+      descEl.textContent = data.description;
+      cargoEl.textContent = data.cargoTypes;
+      bordersEl.innerHTML = data.borders.map(border => `<span class="chip"><i class="fas fa-passport"></i> ${border}</span>`).join('');
+    }
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoTimer = setInterval(() => {
+      if (userPaused) return;
+      currentIndex = (currentIndex + 1) % routes.length;
+      updateRoute(routes[currentIndex], true);
+    }, 4000);
+  }
+
+  function stopAutoSlide() {
+    if (autoTimer) clearInterval(autoTimer);
+  }
+
+  function handleUserInteraction() {
+    userPaused = true;
+    if (statusBadge) {
+      statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Pressable (Paused for selection)`;
+      statusBadge.classList.add('user-active');
+    }
+    if (pauseTimeout) clearTimeout(pauseTimeout);
+    pauseTimeout = setTimeout(() => {
+      userPaused = false;
+      if (statusBadge) {
+        statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Auto-sliding (Tap tab to freeze)`;
+        statusBadge.classList.remove('user-active');
       }
+    }, 8000);
+  }
+
+  routeButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      currentIndex = index;
+      handleUserInteraction();
+      updateRoute(btn.dataset.route, true);
     });
   });
+
+  if (routeTabsContainer) {
+    routeTabsContainer.addEventListener('touchstart', handleUserInteraction, { passive: true });
+    routeTabsContainer.addEventListener('mouseenter', handleUserInteraction);
+  }
+
+  if (statusBadge) {
+    statusBadge.addEventListener('click', handleUserInteraction);
+  }
+
+  startAutoSlide();
 }
 
-/* 3. Fleet Showcase Filter */
+/* 3. Fleet Showcase Filter with Automatic Slide & Card Animations */
 function initFleetFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const fleetCards = document.querySelectorAll('.fleet-card');
+  const fleetGrid = document.querySelector('.fleet-grid');
+  const statusBadge = document.getElementById('fleet-auto-status');
+  const filterBarContainer = document.querySelector('.fleet-filter-bar');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  if (filterBtns.length === 0) return;
 
-      const category = btn.dataset.filter;
+  const categories = Array.from(filterBtns).map(btn => btn.dataset.filter);
+  let currentIndex = 0;
+  let autoTimer = null;
+  let userPaused = false;
+  let pauseTimeout = null;
 
+  function filterFleet(category, animate = true) {
+    filterBtns.forEach(btn => {
+      if (btn.dataset.filter === category) {
+        btn.classList.add('active');
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    if (animate && fleetGrid) {
+      fleetCards.forEach(card => {
+        card.classList.remove('animate-in');
+        card.classList.add('animate-out');
+      });
+
+      setTimeout(() => {
+        fleetCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+            card.classList.remove('animate-out');
+            card.classList.add('animate-in');
+          } else {
+            card.style.display = 'none';
+            card.classList.remove('animate-out');
+          }
+        });
+      }, 200);
+    } else {
       fleetCards.forEach(card => {
         if (category === 'all' || card.dataset.category === category) {
           card.style.display = 'block';
@@ -161,8 +270,56 @@ function initFleetFilter() {
           card.style.display = 'none';
         }
       });
+    }
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoTimer = setInterval(() => {
+      if (userPaused) return;
+      currentIndex = (currentIndex + 1) % categories.length;
+      filterFleet(categories[currentIndex], true);
+    }, 4500);
+  }
+
+  function stopAutoSlide() {
+    if (autoTimer) clearInterval(autoTimer);
+  }
+
+  function handleUserInteraction() {
+    userPaused = true;
+    if (statusBadge) {
+      statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Pressable (Paused for selection)`;
+      statusBadge.classList.add('user-active');
+    }
+    if (pauseTimeout) clearTimeout(pauseTimeout);
+    pauseTimeout = setTimeout(() => {
+      userPaused = false;
+      if (statusBadge) {
+        statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Auto-sliding (Tap button to freeze)`;
+        statusBadge.classList.remove('user-active');
+      }
+    }, 8000);
+  }
+
+  filterBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      currentIndex = index;
+      handleUserInteraction();
+      filterFleet(btn.dataset.filter, true);
     });
   });
+
+  if (filterBarContainer) {
+    filterBarContainer.addEventListener('touchstart', handleUserInteraction, { passive: true });
+    filterBarContainer.addEventListener('mouseenter', handleUserInteraction);
+  }
+
+  if (statusBadge) {
+    statusBadge.addEventListener('click', handleUserInteraction);
+  }
+
+  startAutoSlide();
 }
 
 /* 4. Interactive Freight Rate Estimator */
