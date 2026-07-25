@@ -225,8 +225,18 @@
           <div class="pressable-hand-badge" id="route-auto-status">
             <i class="fas fa-hand-pointer"></i> Sliding words (Tap to pause & select)
           </div>
-          <div class="route-tabs-wrapper">
-            <div class="route-tabs">
+          <div class="marquee-wrapper" id="route-marquee-wrapper">
+            <div class="route-tabs marquee-track" id="route-marquee-track">
+              <button class="route-tab-btn active" data-route="drc">
+                <i class="fas fa-map-marker-alt"></i> DRC Express
+              </button>
+              <button class="route-tab-btn" data-route="sadc">
+                <i class="fas fa-globe"></i> SADC Countries
+              </button>
+              <button class="route-tab-btn" data-route="domestic">
+                <i class="fas fa-road"></i> South Africa Domestic
+              </button>
+              <!-- Cloned track for infinite seamless sliding -->
               <button class="route-tab-btn active" data-route="drc">
                 <i class="fas fa-map-marker-alt"></i> DRC Express
               </button>
@@ -321,8 +331,14 @@
       <div class="pressable-hand-badge" id="fleet-auto-status" style="margin: 0 auto 1rem auto;">
         <i class="fas fa-hand-pointer"></i> Sliding words (Tap to pause & select)
       </div>
-      <div class="fleet-filter-wrapper">
-        <div class="fleet-filter-bar">
+      <div class="marquee-wrapper" id="fleet-marquee-wrapper" style="margin: 0 auto 1.5rem auto;">
+        <div class="fleet-filter-bar marquee-track" id="fleet-marquee-track">
+          <button class="filter-btn active" data-filter="all">All Vehicles</button>
+          <button class="filter-btn" data-filter="superlink">Superlink 34T</button>
+          <button class="filter-btn" data-filter="flatbed">Flatbeds & Tri-Axles</button>
+          <button class="filter-btn" data-filter="lowbed">Heavy Lowbeds</button>
+          <button class="filter-btn" data-filter="tipper">Side-Tippers</button>
+          <!-- Cloned track for infinite seamless sliding -->
           <button class="filter-btn active" data-filter="all">All Vehicles</button>
           <button class="filter-btn" data-filter="superlink">Superlink 34T</button>
           <button class="filter-btn" data-filter="flatbed">Flatbeds & Tri-Axles</button>

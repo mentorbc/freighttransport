@@ -627,28 +627,42 @@ img {
   padding: 2.5rem;
 }
 
-.route-tabs-wrapper,
-.fleet-filter-wrapper {
+/* Infinite Seamless Sliding Word Track */
+.marquee-wrapper {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
   position: relative;
   margin-bottom: 1.5rem;
+  padding: 0.3rem 0;
+  mask-image: linear-gradient(to right, transparent, black 15px, black calc(100% - 15px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15px, black calc(100% - 15px), transparent);
 }
 
-.route-tabs,
-.fleet-filter-bar {
+.marquee-track {
   display: flex;
   gap: 0.8rem;
   width: max-content;
-  min-width: 100%;
-  flex-wrap: nowrap;
-  white-space: nowrap;
   will-change: transform;
+  animation: slideInfiniteMarquee 16s linear infinite;
 }
 
-.route-tab-btn,
-.filter-btn {
+.marquee-track.paused,
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused !important;
+}
+
+@keyframes slideInfiniteMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track .route-tab-btn,
+.marquee-track .filter-btn {
   flex-shrink: 0;
   white-space: nowrap;
   padding: 0.6rem 1.2rem;

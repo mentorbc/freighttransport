@@ -114,40 +114,21 @@ const routeData = {
   }
 };
 
-/* Helper: Smooth Horizontal Word Ticker (Slides ONLY option words inside container, NEVER moves page) */
-function initWordSlider(container, statusBadgeId) {
-  if (!container) return;
-
-  let speed = 0.7; // Smooth slow sliding speed
-  let direction = 1; // 1 = forward, -1 = backward
-  let isPaused = false;
-  let pauseTimer = null;
+/* Helper: Pause Marquee Sliding Track on User Interaction */
+function setupMarqueePause(wrapper, track, statusBadgeId) {
+  if (!wrapper || !track) return;
   const statusBadge = document.getElementById(statusBadgeId);
+  let pauseTimer = null;
 
-  function slideWords() {
-    if (!isPaused && container.scrollWidth > container.clientWidth) {
-      container.scrollLeft += speed * direction;
-
-      if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 1) {
-        direction = -1;
-      } else if (container.scrollLeft <= 0) {
-        direction = 1;
-      }
-    }
-    requestAnimationFrame(slideWords);
-  }
-
-  requestAnimationFrame(slideWords);
-
-  function pauseSliding() {
-    isPaused = true;
+  function pauseTrack() {
+    track.classList.add('paused');
     if (statusBadge) {
       statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Pressable (Paused — Tap to select)`;
       statusBadge.classList.add('user-active');
     }
     if (pauseTimer) clearTimeout(pauseTimer);
     pauseTimer = setTimeout(() => {
-      isPaused = false;
+      track.classList.remove('paused');
       if (statusBadge) {
         statusBadge.innerHTML = `<i class="fas fa-hand-pointer"></i> Sliding words (Tap to pause & select)`;
         statusBadge.classList.remove('user-active');
@@ -155,21 +136,12 @@ function initWordSlider(container, statusBadgeId) {
     }, 4500);
   }
 
-  container.addEventListener('mouseenter', pauseSliding);
-  container.addEventListener('mouseleave', () => {
-    pauseTimer = setTimeout(() => { isPaused = false; }, 2000);
-  });
-  container.addEventListener('touchstart', pauseSliding, { passive: true });
-  container.addEventListener('touchend', () => {
-    pauseTimer = setTimeout(() => { isPaused = false; }, 3500);
-  });
-
-  if (statusBadge) {
-    statusBadge.addEventListener('click', pauseSliding);
-  }
+  wrapper.addEventListener('mouseenter', pauseTrack);
+  wrapper.addEventListener('touchstart', pauseTrack, { passive: true });
+  if (statusBadge) statusBadge.addEventListener('click', pauseTrack);
 }
 
-/* 2. Route Explorer Tabs with Card Animations & Sliding Words */
+/* 2. Route Explorer Tabs with Infinite Marquee Sliding Words & Card Animations */
 function initRouteExplorer() {
   const routeButtons = document.querySelectorAll('.route-tab-btn');
   const routeDetailCard = document.querySelector('.route-detail-card');
@@ -178,18 +150,25 @@ function initRouteExplorer() {
   const descEl = document.getElementById('route-desc');
   const bordersEl = document.getElementById('route-borders');
   const cargoEl = document.getElementById('route-cargo');
-  const routeTabsContainer = document.querySelector('.route-tabs');
+  const wrapper = document.getElementById('route-marquee-wrapper');
+  const track = document.getElementById('route-marquee-track');
 
   if (routeButtons.length === 0) return;
 
   routeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      routeButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
       const routeKey = btn.dataset.route;
-      const data = routeData[routeKey];
 
+      // Sync active state across original & cloned buttons
+      routeButtons.forEach(b => {
+        if (b.dataset.route === routeKey) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      const data = routeData[routeKey];
       if (data && routeDetailCard) {
         routeDetailCard.classList.remove('animate-in');
         routeDetailCard.classList.add('animate-out');
@@ -208,25 +187,31 @@ function initRouteExplorer() {
     });
   });
 
-  // Start smooth horizontal sliding of option words track ONLY
-  initWordSlider(routeTabsContainer, 'route-auto-status');
+  setupMarqueePause(wrapper, track, 'route-auto-status');
 }
 
-/* 3. Fleet Showcase Filter with Card Animations & Sliding Words */
+/* 3. Fleet Showcase Filter with Infinite Marquee Sliding Words & Card Animations */
 function initFleetFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const fleetCards = document.querySelectorAll('.fleet-card');
   const fleetGrid = document.querySelector('.fleet-grid');
-  const filterBarContainer = document.querySelector('.fleet-filter-bar');
+  const wrapper = document.getElementById('fleet-marquee-wrapper');
+  const track = document.getElementById('fleet-marquee-track');
 
   if (filterBtns.length === 0) return;
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
       const category = btn.dataset.filter;
+
+      // Sync active state across original & cloned buttons
+      filterBtns.forEach(b => {
+        if (b.dataset.filter === category) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
 
       if (fleetGrid) {
         fleetCards.forEach(card => {
@@ -250,8 +235,7 @@ function initFleetFilter() {
     });
   });
 
-  // Start smooth horizontal sliding of option words track ONLY
-  initWordSlider(filterBarContainer, 'fleet-auto-status');
+  setupMarqueePause(wrapper, track, 'fleet-auto-status');
 }
 
 /* 4. Interactive Freight Rate Estimator */
