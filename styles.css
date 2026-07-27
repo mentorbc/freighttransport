@@ -79,7 +79,7 @@ img {
 }
 
 .section-padding {
-  padding: 6rem 0;
+  padding: 4.5rem 0;
 }
 
 .text-gradient {
@@ -110,7 +110,7 @@ img {
 .section-header {
   text-align: center;
   max-width: 750px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 2.5rem;
 }
 
 .section-header h2 {
@@ -626,7 +626,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: center;
+  align-items: start;
 }
 
 .route-info-box {
@@ -768,7 +768,7 @@ img {
               url('images/logistics_terminal.jpg') center/cover no-repeat;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  min-height: 480px;
+  min-height: 400px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
