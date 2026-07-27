@@ -31,7 +31,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  max-width: 100%;
 }
 
 html {
@@ -156,6 +155,7 @@ img {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .brand-logo-img {
@@ -190,6 +190,7 @@ img {
 .logo-text {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .logo-title {
@@ -211,15 +212,16 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
 .nav-links a {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-main);
   transition: var(--transition);
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -416,9 +418,9 @@ img {
 /* Hero Section */
 .hero {
   position: relative;
-  min-height: 100vh;
-  padding-top: 140px;
-  padding-bottom: 5rem;
+  min-height: auto;
+  padding-top: 130px;
+  padding-bottom: 4rem;
   display: flex;
   align-items: center;
   background: linear-gradient(to right, rgba(11, 19, 41, 0.92), rgba(11, 19, 41, 0.75)),
@@ -643,6 +645,7 @@ img {
   display: flex;
   gap: 0.8rem;
   width: max-content;
+  max-width: none !important;
   will-change: transform;
   animation: slideInfiniteMarquee 16s linear infinite;
 }
@@ -1394,8 +1397,8 @@ footer {
    RESPONSIVE MEDIA QUERIES (DESKTOP / TABLET / MOBILE)
    ========================================================================== */
 
-/* Large Tablets & Mobile Devices (<= 992px) */
-@media (max-width: 992px) {
+/* Large Tablets & Mobile Devices (<= 1080px) */
+@media (max-width: 1080px) {
   /* Show Sticky Bottom Mobile Nav */
   .mobile-bottom-nav {
     display: flex;
