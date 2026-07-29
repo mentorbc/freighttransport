@@ -624,9 +624,10 @@ img {
 
 .routes-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 3rem;
   align-items: start;
+  width: 100%;
 }
 
 .route-info-box {
@@ -634,12 +635,15 @@ img {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
+  min-width: 0;
+  width: 100%;
 }
 
 /* Infinite Seamless Sliding Word Track */
 .marquee-wrapper {
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   position: relative;
   margin-bottom: 1.5rem;
@@ -774,6 +778,8 @@ img {
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--shadow-box);
+  min-width: 0;
+  width: 100%;
 }
 
 .map-node-list {
